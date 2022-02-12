@@ -68,27 +68,29 @@ flip.addEventListener('click', function (){
 
 })
 
-// Clear Button Click Handler
-   // TODO: Reset global variables to 0
-   // TODO: Update the scoreboard (same logic as in flip button click)
+   allRolls[rolledValue - 1] += 1
 
-   clearScoreboard.addEventListener('click', function (){
-    let total = 0
-    let clearScoreboard = Math.random() < 0.5
+// Remember arrays are indexed from zero, so it is one less than the rolled value
+allRolls[rolledValue - 1] += 1
 
-    if(clearScoreboard) {
-      let clearScoreboard = document.createElement('h3')
-      clearScoreboard.setAttribute('id', 'message')
-      clearScoreboard.textContent = 'Let\'s Get Rolling!'
-      game.append(clearScoreboard)
- 
+// Show different images for each dice roll
+document.getElementById('dice-image').src = `assets/images/dice/dice${rolledValue}.png`
 
-}
+// Update the scoreboard
+updateScoreboard()
+
+})
 
 
+   document.getElementById('clear').addEventListener('click', function () {
+// Reset the rolls values to zeroes
+    allRolls = [0, 0, 0, 0, 0, 0]
 
-   
-   })
+// Update the message to the user
+    document.getElementById('message').textContent = 'Let\'s Get Rolling!'
 
+// Update the scoreboard
+    updateScoreboard()
+    
 
 })
